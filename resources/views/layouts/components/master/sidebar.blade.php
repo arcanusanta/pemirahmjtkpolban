@@ -11,6 +11,9 @@
         <ul class="sidebar-menu">
             <li class="menu-header">{{ __('Master') }}</li>
             <li class="{{ Request::routeIs('dashboard') ? 'active' : '' }}"><a class="nav-link" href="{{ route('dashboard') }}"><i class="fas fa-fire"></i> <span>{{ __('Dashboard') }}</span></a></li>
+
+            <li class="menu-header">{{ __('Management Data') }}</li>
+            <li class="{{ Request::routeIs('operator.index') ? 'active' : '' }}"><a class="nav-link" href="{{ route('operator.index') }}"><i class="fas fa-users"></i> <span>{{ __('Operator') }}</span></a></li>
         </ul>
     </aside>
 </div>
