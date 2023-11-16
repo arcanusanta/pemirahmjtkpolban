@@ -21,5 +21,15 @@ class UsersSeeder extends Seeder
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ])->assignRole('Administrator');
+
+        User::create([
+            'name' => 'Garly Nugraha',
+            'email' => 'princegarll@pemirahmjtkpolban.my.id',
+            'email_verified_at' => now(),
+            'password' => Hash::make('uRKNjge*P(XUk5F4'),
+            'remember_token' => Str::random(10),
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ])->assignRole('Operator');
     }
 }
