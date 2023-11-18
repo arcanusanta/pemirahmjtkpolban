@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GradeController;
 use App\Http\Controllers\OperatorController;
+use App\Http\Controllers\StudyProgramController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,4 +29,9 @@ Route::group(['prefix' => 'master', 'middleware' => ['auth:sanctum', 'verified']
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('/operator', OperatorController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
+
+    Route::name('voters.')->prefix('voters')->group(function () {
+        Route::resource('study-program', StudyProgramController::class)->only(['index', 'create', 'store', 'destroy']);
+        Route::resource('grade', GradeController::class)->only(['index', 'create', 'store', 'destroy']);
+    });
 });
