@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\StudyProgramController;
+use App\Http\Controllers\VoterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,8 +31,9 @@ Route::group(['prefix' => 'master', 'middleware' => ['auth:sanctum', 'verified']
 
     Route::resource('/operator', OperatorController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
 
-    Route::name('voters.')->prefix('voters')->group(function () {
+    Route::name('voter.')->prefix('voters')->group(function () {
         Route::resource('study-program', StudyProgramController::class)->only(['index', 'create', 'store', 'destroy']);
         Route::resource('grade', GradeController::class)->only(['index', 'create', 'store', 'destroy']);
+        Route::resource('data', VoterController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
     });
 });
