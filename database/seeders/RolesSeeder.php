@@ -10,9 +10,9 @@ class RolesSeeder extends Seeder
 {
     public function run(): void
     {
-        $Administrator = Role::create(['name' => 'Administrator']);
-        $Operator = Role::create(['name' => 'Operator']);
-        $Witness = Role::create(['name' => 'Witness']);
-        $Voters = Role::create(['name' => 'Voters']);
+        Role::create(['name' => 'Administrator']);
+        Role::create(['name' => 'Operator']);
+        Role::create(['name' => 'Witness']);
+        Role::create(['name' => 'Voters']);
     }
 }
