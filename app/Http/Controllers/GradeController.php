@@ -15,19 +15,19 @@ class GradeController extends Controller
         if (request()->ajax()) {
             $Data = Grade::latest()->get();
 
-            return DataTables::of($Data)->addIndexColumn()->addColumn('action', 'master.voters.grade.action')->rawColumns(['action'])->make(true);
+            return DataTables::of($Data)->addIndexColumn()->addColumn('action', 'master.voter.grade.action')->rawColumns(['action'])->make(true);
         }
 
         $Title = "Kelas";
 
-        return view('master.voters.grade.index', compact('Title'));
+        return view('master.voter.grade.index', compact('Title'));
     }
 
     public function create()
     {
         $Title = "Tambah Kelas";
 
-        return view('master.voters.grade.create', compact('Title'));
+        return view('master.voter.grade.create', compact('Title'));
     }
 
     public function store(GradeRequest $Request)
@@ -38,10 +38,10 @@ class GradeController extends Controller
             ]);
 
             Alert::success('Selamat', 'Anda telah berhasil menambahkan data');
-            return redirect()->route('voters.grade.index');
+            return redirect()->route('voter.grade.index');
         } catch (\Exception $Excep) {
             Alert::error('Error', $Excep->getMessage());
-            return redirect()->route('voters.grade.index');
+            return redirect()->route('voter.grade.index');
         }
     }
 
@@ -66,10 +66,10 @@ class GradeController extends Controller
             Grade::where('id', $id)->delete();
 
             Alert::success('Selamat', 'Anda telah berhasil menghapus data');
-            return redirect()->route('voters.grade.index');
+            return redirect()->route('voter.grade.index');
         } catch (\Exception $Excep) {
             Alert::error('Error', $Excep->getMessage());
-            return redirect()->route('voters.grade.index');
+            return redirect()->route('voter.grade.index');
         }
     }
 }

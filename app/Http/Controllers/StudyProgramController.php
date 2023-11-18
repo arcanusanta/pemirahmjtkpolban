@@ -15,19 +15,19 @@ class StudyProgramController extends Controller
         if (request()->ajax()) {
             $Data = StudyProgram::latest()->get();
 
-            return DataTables::of($Data)->addIndexColumn()->addColumn('action', 'master.voters.study-program.action')->rawColumns(['action'])->make(true);
+            return DataTables::of($Data)->addIndexColumn()->addColumn('action', 'master.voter.study-program.action')->rawColumns(['action'])->make(true);
         }
 
         $Title = "Program Studi";
 
-        return view('master.voters.study-program.index', compact('Title'));
+        return view('master.voter.study-program.index', compact('Title'));
     }
 
     public function create()
     {
         $Title = "Tambah Program Studi";
 
-        return view('master.voters.study-program.create', compact('Title'));
+        return view('master.voter.study-program.create', compact('Title'));
     }
 
     public function store(StudyProgramRequest $Request)
@@ -38,10 +38,10 @@ class StudyProgramController extends Controller
             ]);
 
             Alert::success('Selamat', 'Anda telah berhasil menambahkan data');
-            return redirect()->route('voters.study-program.index');
+            return redirect()->route('voter.study-program.index');
         } catch (\Exception $Excep) {
             Alert::error('Error', $Excep->getMessage());
-            return redirect()->route('voters.study-program.index');
+            return redirect()->route('voter.study-program.index');
         }
     }
 
@@ -66,10 +66,10 @@ class StudyProgramController extends Controller
             StudyProgram::where('id', $id)->delete();
 
             Alert::success('Selamat', 'Anda telah berhasil menghapus data');
-            return redirect()->route('voters.study-program.index');
+            return redirect()->route('voter.study-program.index');
         } catch (\Exception $Excep) {
             Alert::error('Error', $Excep->getMessage());
-            return redirect()->route('voters.study-program.index');
+            return redirect()->route('voter.study-program.index');
         }
     }
 }

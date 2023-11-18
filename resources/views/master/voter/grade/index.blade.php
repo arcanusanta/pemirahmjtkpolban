@@ -9,7 +9,7 @@
         <li class="breadcrumb-item">{{ __('Master') }}</li>
         <li class="breadcrumb-item">{{ __('Pemilih') }}</li>
         <li class="breadcrumb-item">{{ __('Kelas') }}</li>
-        <li class="breadcrumb-item"><a href="{{ route('voters.grade.index') }}">{{ __('Data') }}</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('voter.grade.index') }}">{{ __('Data') }}</a></li>
     </ol>
 @endsection
 
@@ -19,7 +19,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="col">
-                        <a href="{{ route('voters.grade.create') }}" class="btn btn-primary float-right"><span class="fas fa-plus"></span> {{ __('Tambah') }}</a>
+                        <a href="{{ route('voter.grade.create') }}" class="btn btn-primary float-right"><span class="fas fa-plus"></span> {{ __('Tambah') }}</a>
                     </div>
                 </div>
 
@@ -49,7 +49,7 @@
         var datatable = $('#crudGrade').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('voters.grade.index') }}",
+            ajax: "{{ route('voter.grade.index') }}",
             columns: [
                 { data: 'no', name: 'no', render: function (data, type, row, meta) {
                         return meta.row + meta.settings._iDisplayStart + 1;

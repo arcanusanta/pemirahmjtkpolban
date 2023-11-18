@@ -1,5 +1,5 @@
 <div class="d-flex">
-    <form class="inline-block" action="{{ route('voters.study-program.destroy', $id) }}" method="POST">
+    <form class="inline-block" action="{{ route('voter.study-program.destroy', $id) }}" method="POST">
         @csrf
         @method("delete")
 
