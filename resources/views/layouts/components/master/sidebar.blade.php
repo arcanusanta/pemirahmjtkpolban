@@ -14,6 +14,13 @@
 
             <li class="menu-header">{{ __('Management Data') }}</li>
             <li class="{{ Request::routeIs('operator.index') ? 'active' : '' }}"><a class="nav-link" href="{{ route('operator.index') }}"><i class="fas fa-users"></i> <span>{{ __('Operator') }}</span></a></li>
+            <li class="dropdown ">
+                    <a href="" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user"></i> <span>{{ __('Pemilih') }}</span></a>
+                    <ul class="dropdown-menu">
+                        <li class="{{ Request::routeIs('voters.study-program.index') ? 'active' : '' }}"><a class="nav-link" href="{{ route('voters.study-program.index') }}">{{ __('Program Studi') }}</a></li>
+                        <li class="{{ Request::routeIs('voters.grade.index') ? 'active' : '' }}"><a class="nav-link" href="{{ route('voters.grade.index') }}">{{ __('Kelas') }}</a></li>
+                    </ul>
+                </li>
         </ul>
     </aside>
 </div>
