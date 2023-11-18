@@ -16,10 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
-Auth::routes();
+Auth::routes([
+    'register' => false,
+]);
 
 Route::group(['prefix' => 'master', 'middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
