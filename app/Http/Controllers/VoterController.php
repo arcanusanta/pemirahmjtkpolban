@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreVoterRequest;
+use App\Imports\VotersImport;
 use App\Models\Grade;
 use App\Models\StudyProgram;
 use App\Models\Voter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\DataTables;
 
@@ -45,7 +47,7 @@ class VoterController extends Controller
                 'grade_id' => $Request->grade,
                 'year' => $Request->year,
                 'email' => $Request->email,
-                'status' => 'AKTIF',
+                'status' => 'Aktif',
                 'election_status' => 'Belum Memilih',
                 'password' => Hash::make($Request->password),
             ])->assignRole('Voter');
@@ -84,5 +86,15 @@ class VoterController extends Controller
             Alert::error('Error', $Excep->getMessage());
             return redirect()->route('voter.data.index');
         }
+    }
+
+    public function import(Request $Request){
+        $Message = ['file.mimes' => 'Format File yang boleh diupload adalah .xls, .xlsx, atau .csv'];
+        $Request->validate(['file' => 'file|mimes:xls,xlsx,csv'], $Message);
+
+        Excel::import(new VotersImport, $Request->file('file')->store('temp'));
+
+        Alert::success('Selamat', 'You\'ve Successfully Import Students Data');
+        return redirect()->route('voter.data.index');
     }
 }

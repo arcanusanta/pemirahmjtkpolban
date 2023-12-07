@@ -40,6 +40,7 @@ Route::group(['prefix' => 'master', 'middleware' => ['auth:web,webvoter', 'verif
         Route::resource('study-program', StudyProgramController::class)->only(['index', 'create', 'store', 'destroy']);
         Route::resource('grade', GradeController::class)->only(['index', 'create', 'store', 'destroy']);
         Route::resource('data', VoterController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
+        Route::post('/data/import', [VoterController::class, 'import'])->name('data.import');
     });
 
     Route::resource('/candidate', CandidateController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);

@@ -18,7 +18,8 @@
             <div class="card">
                 <div class="card-header">
                     <div class="col">
-                        <a href="{{ route('voter.data.create') }}" class="btn btn-primary float-right"><span class="fas fa-plus"></span> {{ __('Tambah') }}</a>
+                        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#importVotersModal"><span class="fas fa-file-import"></span> {{ __('Import') }}</button>
+                        <a href="{{ route('voter.data.create') }}" class="btn btn-primary float-right mr-2"><span class="fas fa-plus"></span> {{ __('Tambah') }}</a>
                     </div>
                 </div>
 
@@ -43,6 +44,36 @@
                         </table>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('modal')
+    <div class="modal fade" id="importVotersModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Import Data Pemilih</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route('voter.data.import') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+
+                    <div class="modal-body">
+                        <a href="{{ asset('document/import/VotersDataTemplates.xlsx') }}" download>Format Data</a>
+
+                        <div class="form-group">
+                            <input type="file" class="form-control dropify" id="customFile" name="file" accept=".xlsx, .xls, .csv">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

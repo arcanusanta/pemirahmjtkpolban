@@ -16,7 +16,7 @@ return new class extends Migration
             $table->uuid('grade_id');
             $table->string('year', 4);
             $table->string('email')->unique();
-            $table->enum('status', ['AKTIF', 'NON-AKTIF']);
+            $table->enum('status', ['Aktif', 'Non Aktif']);
             $table->enum('election_status', ['Sudah Memilih', 'Belum Memilih']);
             $table->string('password');
             $table->timestamps();
