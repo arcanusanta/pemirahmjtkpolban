@@ -26,6 +26,10 @@
             <li class="menu-header">{{ __('Manajemen Data') }}</li>
             <li class="{{ Request::routeIs('candidate.index') ? 'active' : '' }}"><a class="nav-link" href="{{ route('candidate.index') }}"><i class="fas fa-users"></i> <span>{{ __('Kandidat') }}</span></a></li>
 
+            <li class="menu-header">{{ __('Status Pemilihan') }}</li>
+            <li class="{{ Request::routeIs('election-status.already') ? 'active' : '' }}"><a class="nav-link" href="{{ route('election-status.already') }}"><i class="fas fa-users"></i> <span>{{ __('Sudah Memilih') }}</span></a></li>
+            <li class="{{ Request::routeIs('election-status.notyet') ? 'active' : '' }}"><a class="nav-link" href="{{ route('election-status.notyet') }}"><i class="fas fa-users"></i> <span>{{ __('Belum Memilih') }}</span></a></li>
+
             @hasrole('Voter')
                 <li class="menu-header">{{ __('Tempat Pemungutan Suara') }}</li>
                 <li class="{{ Request::routeIs('polling-booth.index') ? 'active' : '' }}"><a class="nav-link" href="{{ route('polling-booth.index') }}"><i class="fas fa-box"></i> <span>{{ __('Bilik Suara') }}</span></a></li>

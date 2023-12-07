@@ -8,6 +8,7 @@ use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\PollingBoothController;
 use App\Http\Controllers\StudyProgramController;
 use App\Http\Controllers\VoterController;
+use App\Http\Controllers\VoterStatusController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,4 +46,9 @@ Route::group(['prefix' => 'master', 'middleware' => ['auth:web,webvoter', 'verif
 
     Route::resource('/candidate', CandidateController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
     route::resource('/polling-booth', PollingBoothController::class);
+
+    Route::name('election-status.')->prefix('election-status')->group(function () {
+        Route::get('/already', [VoterStatusController::class, 'already'])->name('already');
+        Route::get('/notyet', [VoterStatusController::class, 'notyet'])->name('notyet');
+    });
 });
