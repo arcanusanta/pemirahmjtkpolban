@@ -33,7 +33,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">{{ __('Nama Lengkap*') }}</label>
                             <div class="col-sm-9">
-                                <input type="text" value="{{ old('fullname') }}" id="fullname" name="fullname" class="form-control" placeholder="Contoh : Prince">
+                                <input type="text" value="{{ old('name') }}" id="name" name="name" class="form-control" placeholder="Contoh : Prince">
                             </div>
                         </div>
 
@@ -72,6 +72,20 @@
                             <label class="col-sm-3 col-form-label">{{ __('Email*') }}</label>
                             <div class="col-sm-9">
                                 <input type="email" value="{{ old('email') }}" id="email" name="email" class="form-control" required="" placeholder="Contoh : prince@pemirahahmjtkpolban.my.id">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Waktu Pemilihan*</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <input type="text" value="{{ old('time') }}" id="time" name="time" class="form-control timepicker">
+                                </div>
                             </div>
                         </div>
 

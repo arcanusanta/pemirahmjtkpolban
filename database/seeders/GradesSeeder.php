@@ -13,5 +13,6 @@ class GradesSeeder extends Seeder
         Grade::create(['name' => 'Kelas A']);
         Grade::create(['name' => 'Kelas B']);
         Grade::create(['name' => 'Kelas C']);
+        Grade::create(['name' => 'Kelas D']);
     }
 }

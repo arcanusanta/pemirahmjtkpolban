@@ -11,12 +11,13 @@ return new class extends Migration
         Schema::create('voters', function (Blueprint $table) {
             $table->uuid('id');
             $table->string('nim', 9);
-            $table->string('fullname', 100);
+            $table->string('name', 100);
             $table->uuid('study_program_id');
             $table->uuid('grade_id');
             $table->string('year', 4);
             $table->string('email')->unique();
             $table->enum('status', ['AKTIF', 'NON-AKTIF']);
+            $table->enum('election_status', ['Sudah Memilih', 'Belum Memilih']);
             $table->string('password');
             $table->timestamps();
 

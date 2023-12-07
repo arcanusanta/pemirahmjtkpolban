@@ -40,12 +40,13 @@ class VoterController extends Controller
         try {
             Voter::create([
                 'nim' => $Request->nim,
-                'fullname' => $Request->fullname,
+                'name' => $Request->name,
                 'study_program_id' => $Request->study_program,
                 'grade_id' => $Request->grade,
                 'year' => $Request->year,
                 'email' => $Request->email,
                 'status' => 'AKTIF',
+                'election_status' => 'Belum Memilih',
                 'password' => Hash::make($Request->password),
             ])->assignRole('Voter');
 

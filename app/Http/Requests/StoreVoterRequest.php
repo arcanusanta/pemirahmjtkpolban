@@ -16,7 +16,7 @@ class StoreVoterRequest extends FormRequest
     {
         return [
             'nim' => 'required',
-            'fullname' => 'required',
+            'name' => 'required',
             'grade' => 'required',
             'study_program' => 'required',
             'year' => 'required',

@@ -3,18 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Ramsey\Uuid\Uuid as RamseyUuid;
 use Spatie\Permission\Traits\HasRoles;
 
-class Voter extends Model
+class Voter extends Authenticatable
 {
     use HasFactory, HasRoles;
 
     protected $keyType = 'string';
 
     protected $fillable = [
-        'nim', 'fullname', 'study_program_id', 'grade_id', 'year', 'email', 'status', 'password'
+        'nim', 'name', 'study_program_id', 'grade_id', 'year', 'email', 'status', 'password'
     ];
 
     protected $guarded = [];

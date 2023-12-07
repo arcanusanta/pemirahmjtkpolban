@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="{{ asset('vendor/stisla2.2.0/dist/assets/modules/select2/dist/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/stisla2.2.0/dist/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/stisla2.2.0/dist/assets/css/components.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/stisla2.2.0/dist/assets/modules/bootstrap-daterangepicker/daterangepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/stisla2.2.0/dist/assets/modules/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/stisla2.2.0/dist/assets/modules/jquery-selectric/selectric.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/stisla2.2.0/dist/assets/modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/stisla2.2.0/dist/assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
 </head>
 <body>
     @include('sweetalert::alert')
@@ -56,6 +61,15 @@
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
     <script src="{{ asset('vendor/stisla2.2.0/dist/assets/js/scripts.js') }}"></script>
     <script src="{{ asset('vendor/stisla2.2.0/dist/assets/js/custom.js') }}"></script>
+    <script src="{{ asset('vendor/stisla2.2.0/dist/assets/modules/cleave-js/dist/cleave.min.js') }}"></script>
+    <script src="{{ asset('vendor/stisla2.2.0/dist/assets/modules/cleave-js/dist/addons/cleave-phone.us.js') }}"></script>
+    <script src="{{ asset('vendor/stisla2.2.0/dist/assets/modules/jquery-pwstrength/jquery.pwstrength.min.js') }}"></script>
+    <script src="{{ asset('vendor/stisla2.2.0/dist/assets/modules/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+    <script src="{{ asset('vendor/stisla2.2.0/dist/assets/modules/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}"></script>
+    <script src="{{ asset('vendor/stisla2.2.0/dist/assets/modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}"></script>
+    <script src="{{ asset('vendor/stisla2.2.0/dist/assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+    <script src="{{ asset('vendor/stisla2.2.0/dist/assets/modules/select2/dist/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('vendor/stisla2.2.0/dist/assets/modules/jquery-selectric/jquery.selectric.min.js') }}"></script>
 
     @stack('scripts')
 </body>
