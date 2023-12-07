@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreOperatorRequest;
+use App\Http\Requests\UpdateOperatorRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\DataTables;
 
 class OperatorController extends Controller
@@ -17,34 +21,36 @@ class OperatorController extends Controller
                         ->where('roles.name', 'Operator')->get();
 
             return DataTables::of($Data)->addIndexColumn()
-                        ->addColumn('action', function($item) {
-                            return '
-                                <div class="d-flex">
-                                    <a href="' . route('operator.edit', $item->id) . '" class="ml-2 btn btn-warning">
-                                        <span class="fas fa-edit"></span>
-                                    </a>
-                                    <form class="inline-block" action="' . route('operator.destroy', $item->id) . '" method="POST">
-                                        <button class="ml-2 btn btn-danger">
-                                            <span class="fas fa-trash"></span>
-                                        </button>
-                                        ' . method_field('delete') . csrf_field() . '
-                                    </form>
-                                </div>
-                            ';
-                        })->rawColumns(['action'])->make(true);
+                        ->addColumn('action', 'master.operator.action')->rawColumns(['action'])->make(true);
         }
 
-        return view('master.operator.index');
+        $Title = "Tambah Operator";
+
+        return view('master.operator.index', compact('Title'));
     }
 
     public function create()
     {
-        //
+        $Title = "Tambah Operator";
+
+        return view('master.operator.create', compact('Title'));
     }
 
-    public function store(Request $request)
+    public function store(StoreOperatorRequest $Request)
     {
-        //
+        try {
+            User::create([
+                'name' => $Request->name,
+                'email' => $Request->email,
+                'password' => Hash::make($Request->password),
+            ])->assignRole('Operator');
+
+            Alert::success('Congrats', 'You\'ve Successfully Registered');
+            return redirect()->route('operator.index');
+        } catch (\Exception $Excep) {
+            Alert::error('Error', $Excep->getMessage());
+            return redirect()->route('operator.index');
+        }
     }
 
     public function show(string $id)
@@ -54,16 +60,40 @@ class OperatorController extends Controller
 
     public function edit(string $id)
     {
-        //
+        $Title = "Edit Operator";
+        $Data = User::where('id', $id)->get();
+
+        return view('master.operator.edit', compact('Data', 'Title'));
     }
 
-    public function update(Request $request, string $id)
+    public function update(UpdateOperatorRequest $Request, string $id)
     {
-        //
+        try {
+            $Data = User::where('id', $id);
+
+            $Data->update([
+                'name' => $Request->name,
+                'email' => $Request->email,
+            ]);
+
+            Alert::success('Congrats', 'You\'ve Successfully Updated');
+            return redirect()->route('operator.index');
+        } catch (\Exception $Excep) {
+            Alert::error('Error', $Excep->getMessage());
+            return redirect()->route('operator.index');
+        }
     }
 
     public function destroy(string $id)
     {
-        //
+        try {
+            User::where('id', $id)->delete();
+
+            Alert::success('Selamat', 'Anda telah berhasil menghapus data');
+            return redirect()->route('operator.index');
+        } catch (\Exception $Excep) {
+            Alert::error('Error', $Excep->getMessage());
+            return redirect()->route('operator.index');
+        }
     }
 }
