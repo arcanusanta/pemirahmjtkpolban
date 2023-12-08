@@ -10,6 +10,13 @@ use Yajra\DataTables\DataTables;
 
 class CandidateController extends Controller
 {
+    function __construct() {
+        $this->middleware('can:Candidate - Read', ['only' => ['index','show']]);
+        $this->middleware('can:Candidate - Create', ['only' => ['create','store']]);
+        $this->middleware('can:Candidate - Update', ['only' => ['edit','update']]);
+        $this->middleware('can:Candidate - Delete', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         if (request()->ajax()) {

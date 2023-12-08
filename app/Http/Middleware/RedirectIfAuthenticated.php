@@ -24,6 +24,8 @@ class RedirectIfAuthenticated
                 return redirect(RouteServiceProvider::HOME);
             } else if (Auth::guard('webvoter')->check()) {
                 return redirect(RouteServiceProvider::HOME);
+            } else if (Auth::guard('webwitness')->check()) {
+                return redirect(RouteServiceProvider::HOME);
             } 
         }
 

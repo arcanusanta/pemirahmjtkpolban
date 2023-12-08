@@ -3,20 +3,22 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Ramsey\Uuid\Uuid as RamseyUuid;
+use Spatie\Permission\Traits\HasRoles;
 
-class Candidate extends Model
+class Witness extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, HasRoles;
 
     protected $keyType = 'string';
 
     protected $fillable = [
-        'sequence_number', 'fullname', 'photo', 'vision_and_mission', 'curriculum_vitae'
+        'nim', 'name', 'study_program_id', 'grade_id', 'year', 'email', 'password'
     ];
 
     protected $guarded = [];
+    protected $guard_name = 'web';
 
     protected $casts = [
         'id' => 'string',
@@ -32,8 +34,13 @@ class Candidate extends Model
         });
     }
 
-    public function resultVoting()
+    public function study_programs()
     {
-        return $this->hasMany(Result::class, 'candidate_id', 'id');
+        return $this->belongsTo(StudyProgram::class, 'study_program_id');
+    }
+
+    public function grades()
+    {
+        return $this->belongsTo(Grade::class, 'grade_id');
     }
 }

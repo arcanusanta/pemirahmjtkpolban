@@ -7,8 +7,8 @@
 @section('section-head')
     <ol class="breadcrumb bg-primary text-white-all">
         <li class="breadcrumb-item">{{ __('Master') }}</li>
-        <li class="breadcrumb-item">{{ __('Pemilih') }}</li>
-        <li class="breadcrumb-item"><a href="{{ route('voter.create') }}">{{ __('Create') }}</a></li>
+        <li class="breadcrumb-item">{{ __('Saksi') }}</li>
+        <li class="breadcrumb-item"><a href="{{ route('witness.create') }}">{{ __('Tambah') }}</a></li>
     </ol>
 @endsection
 
@@ -19,7 +19,7 @@
                 <div class="card-header">
                     
                 </div>
-                <form action="{{ route('voter.store') }}" method="post">
+                <form action="{{ route('witness.store') }}" method="post">
                     @csrf
 
                     <div class="card-body">
@@ -76,20 +76,6 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Waktu Pemilihan*</label>
-                            <div class="col-sm-9">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-clock"></i>
-                                        </div>
-                                    </div>
-                                    <input type="text" value="{{ old('time') }}" id="time" name="time" class="form-control timepicker">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
                             <label class="col-sm-3 col-form-label">{{ __('Kata Sandi*') }}</label>
                             <div class="col-sm-9">
                                 <div class="input-group">
@@ -103,7 +89,7 @@
                         </div>
                     </div>
                     <div class="card-footer text-right">
-                        <a href="{{ route('voter.index') }}" class="btn btn-warning">{{ __('Kembali') }}</a>
+                        <a href="{{ route('witness.index') }}" class="btn btn-warning">{{ __('Kembali') }}</a>
                         <button type="reset" class="btn btn-danger">{{ __('Reset') }}</button>
                         <button type="submit" class="btn btn-primary">{{ __('Simpan') }}</button>
                     </div>

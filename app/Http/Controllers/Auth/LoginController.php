@@ -46,6 +46,8 @@ class LoginController extends Controller
             return redirect()->route('dashboard');
         } else if(Auth::guard('webvoter')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->route('dashboard');
+        } else if(Auth::guard('webwitness')->attempt(['email' => $request->email, 'password' => $request->password])) {
+            return redirect()->route('dashboard');
         } else {
             return redirect()->route('login');
         }

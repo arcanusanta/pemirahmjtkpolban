@@ -8,8 +8,8 @@
     <ol class="breadcrumb bg-primary text-white-all">
         <li class="breadcrumb-item">{{ __('Master') }}</li>
         <li class="breadcrumb-item">{{ __('Pemilih') }}</li>
-        <li class="breadcrumb-item">{{ __('Kelas') }}</li>
-        <li class="breadcrumb-item"><a href="{{ route('voter.grade.index') }}">{{ __('Data') }}</a></li>
+        <li class="breadcrumb-item">{{ __('Program Studi') }}</li>
+        <li class="breadcrumb-item"><a href="{{ route('study-program.index') }}">{{ __('Data') }}</a></li>
     </ol>
 @endsection
 
@@ -19,17 +19,19 @@
             <div class="card">
                 <div class="card-header">
                     <div class="col">
-                        <a href="{{ route('voter.grade.create') }}" class="btn btn-primary float-right"><span class="fas fa-plus"></span> {{ __('Tambah') }}</a>
+                        @can('Grade Create')
+                            <a href="{{ route('study-program.create') }}" class="btn btn-primary float-right"><span class="fas fa-plus"></span> {{ __('Tambah') }}</a>
+                        @endcan
                     </div>
                 </div>
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="crudGrade" class="table table-striped w-100">
+                        <table id="crudStudyProgram" class="table table-striped w-100">
                             <thead>
                                 <tr>
                                     <th class="text-center">{{ __('No') }}</th>
-                                    <th class="text-center">{{ __('Nama Kelas') }}</th>
+                                    <th class="text-center">{{ __('Nama Program Studi') }}</th>
                                     <th class="text-center">{{ __('Aksi') }}</th>
                                 </tr>
                             </thead>
@@ -46,10 +48,10 @@
 
 @push('scripts')
     <script>
-        var datatable = $('#crudGrade').DataTable({
+        var datatable = $('#crudStudyProgram').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('voter.grade.index') }}",
+            ajax: "{{ route('study-program.index') }}",
             columns: [
                 { data: 'no', name: 'no', render: function (data, type, row, meta) {
                         return meta.row + meta.settings._iDisplayStart + 1;

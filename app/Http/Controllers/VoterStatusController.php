@@ -8,6 +8,11 @@ use Yajra\DataTables\DataTables;
 
 class VoterStatusController extends Controller
 {
+    function __construct() {
+        $this->middleware('can:Election Status - Already', ['only' => ['already']]);
+        $this->middleware('can:Election Status - Not Yet', ['only' => ['notyet']]);
+    }
+
     public function already()
     {
         if (request()->ajax()) {

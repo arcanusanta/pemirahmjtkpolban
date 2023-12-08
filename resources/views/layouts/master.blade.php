@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
 
+    <link rel="apple-touch-icon" href="{{ asset('logo/HMJTK POLBAN.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('logo/HMJTK POLBAN.png') }}">
+
     @yield('title')
 
     <link rel="stylesheet" href="{{ asset('vendor/stisla2.2.0/dist/assets/modules/bootstrap/css/bootstrap.min.css') }}">

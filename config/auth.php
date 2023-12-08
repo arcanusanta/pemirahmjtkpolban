@@ -44,6 +44,10 @@ return [
             'driver' => 'session',
             'provider' => 'voters',
         ],
+        'webwitness' => [
+            'driver' => 'session',
+            'provider' => 'witnesses',
+        ],
     ],
 
     /*
@@ -71,6 +75,10 @@ return [
         'voters' => [
             'driver' => 'eloquent',
             'model' => App\Models\Voter::class,
+        ],
+        'witnesses' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Witness::class,
         ],
 
         // 'users' => [
@@ -107,6 +115,12 @@ return [
         ],
         'voters' => [
             'provider' => 'voters',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'witnesses' => [
+            'provider' => 'witnesses',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,

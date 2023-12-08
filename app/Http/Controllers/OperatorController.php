@@ -12,6 +12,13 @@ use Yajra\DataTables\DataTables;
 
 class OperatorController extends Controller
 {
+    function __construct() {
+        $this->middleware('can:Operator - Read', ['only' => ['index','show']]);
+        $this->middleware('can:Operator - Create', ['only' => ['create','store']]);
+        $this->middleware('can:Operator - Update', ['only' => ['edit','update']]);
+        $this->middleware('can:Operator - Delete', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         if (request()->ajax()) {

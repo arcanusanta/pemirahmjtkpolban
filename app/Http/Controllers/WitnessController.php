@@ -2,68 +2,66 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreVoterRequest;
-use App\Imports\VotersImport;
+use App\Http\Requests\StoreWitnessRequest;
+use App\Imports\WitnessessImport;
 use App\Models\Grade;
 use App\Models\StudyProgram;
-use App\Models\Voter;
+use App\Models\Witness;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\DataTables;
 
-class VoterController extends Controller
+class WitnessController extends Controller
 {
     function __construct() {
-        $this->middleware('can:Voter - Read', ['only' => ['index','show']]);
-        $this->middleware('can:Voter - Create', ['only' => ['create','store']]);
-        $this->middleware('can:Voter - Update', ['only' => ['edit','update']]);
-        $this->middleware('can:Voter - Delete', ['only' => ['destroy']]);
+        $this->middleware('can:Witness - Read', ['only' => ['index','show']]);
+        $this->middleware('can:Witness - Create', ['only' => ['create','store']]);
+        $this->middleware('can:Witness - Update', ['only' => ['edit','update']]);
+        $this->middleware('can:Witness - Delete', ['only' => ['destroy']]);
     }
 
     public function index()
     {
         if (request()->ajax()) {
-            $Data = Voter::join('study_programs', 'study_programs.id', '=', 'voters.study_program_id')->join('grades', 'grades.id', '=', 'voters.grade_id')->select('voters.*', 'study_programs.name AS study_program_name', 'grades.name AS grade_name')->get();
+            $Data = Witness::join('study_programs', 'study_programs.id', '=', 'witnesses.study_program_id')->join('grades', 'grades.id', '=', 'witnesses.grade_id')->select('witnesses.*', 'study_programs.name AS study_program_name', 'grades.name AS grade_name')->get();
 
-            return DataTables::of($Data)->addIndexColumn()->addColumn('action', 'master.voter.action')->rawColumns(['action'])->make(true);
+            return DataTables::of($Data)->addIndexColumn()->addColumn('action', 'master.witness.action')->rawColumns(['action'])->make(true);
         }
 
-        $Title = "Pemilih";
+        $Title = "Saksi";
 
-        return view('master.voter.index', compact('Title'));
+        return view('master.witness.index', compact('Title'));
     }
 
     public function create()
     {
-        $Title = "Tambah Pemilih";
+        $Title = "Tambah Saksi";
         $StudyPrograms = StudyProgram::all();
         $Grades = Grade::all();
 
-        return view('master.voter.create', compact('Title', 'StudyPrograms', 'Grades'));
+        return view('master.witness.create', compact('Title', 'StudyPrograms', 'Grades'));
     }
 
-    public function store(StoreVoterRequest $Request)
+    public function store(StoreWitnessRequest $Request)
     {
         try {
-            Voter::create([
+            Witness::create([
                 'nim' => $Request->nim,
                 'name' => $Request->name,
                 'study_program_id' => $Request->study_program,
                 'grade_id' => $Request->grade,
                 'year' => $Request->year,
                 'email' => $Request->email,
-                'status' => 'Aktif',
-                'election_status' => 'Belum Memilih',
                 'password' => Hash::make($Request->password),
-            ])->assignRole('Voter');
+            ])->assignRole('Witness');
 
             Alert::success('Selamat', 'Anda telah berhasil menambahkan data');
-            return redirect()->route('voter.index');
+            return redirect()->route('witness.index');
         } catch (\Exception $Excep) {
             Alert::error('Error', $Excep->getMessage());
-            return redirect()->route('voter.index');
+            return redirect()->route('witness.index');
         }
     }
 
@@ -85,13 +83,13 @@ class VoterController extends Controller
     public function destroy(string $id)
     {
         try {
-            Voter::where('id', $id)->delete();
+            Witness::where('id', $id)->delete();
 
             Alert::success('Selamat', 'Anda telah berhasil menghapus data');
-            return redirect()->route('voter.index');
+            return redirect()->route('witness.index');
         } catch (\Exception $Excep) {
             Alert::error('Error', $Excep->getMessage());
-            return redirect()->route('voter.index');
+            return redirect()->route('witness.index');
         }
     }
 
@@ -99,9 +97,9 @@ class VoterController extends Controller
         $Message = ['file.mimes' => 'Format File yang boleh diupload adalah .xls, .xlsx, atau .csv'];
         $Request->validate(['file' => 'file|mimes:xls,xlsx,csv'], $Message);
 
-        Excel::import(new VotersImport, $Request->file('file')->store('temp'));
+        Excel::import(new WitnessessImport, $Request->file('file')->store('temp'));
 
         Alert::success('Selamat', 'You\'ve Successfully Import Students Data');
-        return redirect()->route('voter.index');
+        return redirect()->route('witness.index');
     }
 }

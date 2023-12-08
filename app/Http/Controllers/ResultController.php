@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Candidate;
+use App\Models\Result;
 use Illuminate\Http\Request;
 
 class ResultController extends Controller
@@ -11,7 +13,26 @@ class ResultController extends Controller
      */
     public function index()
     {
-        //
+        $Candidate = Candidate::get();
+        $Result = Result::with("voter", "candidate")->GroupBy('candidate_id')->get();
+
+        foreach ($Result as $Value) {
+            $Candidates = Candidate::with("voter")->where("id", $Value->candidate_id)->get();
+            foreach ($Candidates as $key) {
+                $Data['Label'][] = $key->name;
+                
+            }
+            $DataCount = Result::where("candidate_id", $Value->candidate->id)->count();
+
+            $Data['data'][] =  (int) $DataCount;
+
+            if($Data != null) {
+                $this->Result = json_encode($Data);
+                $Result = $this->Result;
+            }
+        }
+
+        return view('master.result.index', compact('Result'));
     }
 
     /**
