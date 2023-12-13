@@ -69,7 +69,7 @@
                                     </div>
                                 </div>
                                 <div class="pricing-cta">
-                                    <a href="{{ asset('document/cv.pdf') }}">Curriculum Vitae <i class="fas fa-arrow-right"></i></a>
+                                    <a href="{{ Storage::url($RC->curriculum_vitae) }}">Curriculum Vitae <i class="fas fa-arrow-right"></i></a>
                                 </div>
                                     <div class="pricing-cta">
                                         <a href="{{ route('polling-booth.create') }}">Vote</a>
