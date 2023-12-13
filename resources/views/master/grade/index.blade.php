@@ -7,7 +7,6 @@
 @section('section-head')
     <ol class="breadcrumb bg-primary text-white-all">
         <li class="breadcrumb-item">{{ __('Master') }}</li>
-        <li class="breadcrumb-item">{{ __('Pemilih') }}</li>
         <li class="breadcrumb-item">{{ __('Kelas') }}</li>
         <li class="breadcrumb-item"><a href="{{ route('grade.index') }}">{{ __('Data') }}</a></li>
     </ol>

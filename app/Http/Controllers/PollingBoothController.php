@@ -7,13 +7,13 @@ use App\Models\Result;
 use App\Models\Voter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PollingBoothController extends Controller
 {
     public function index()
     {
-        $Candidates = Candidate::with('user')->get();
-
+        $Candidates = Candidate::latest()->get();
         $UserID = Auth::user()->id;
 
         $Users = Voter::where("id", $UserID)->first();
@@ -33,7 +33,8 @@ class PollingBoothController extends Controller
 
     public function create()
     {
-        //
+        Alert::success('Selamat', 'Anda telah berhasil memilih');
+        return redirect()->route('dashboard');
     }
 
     public function store(Request $request)

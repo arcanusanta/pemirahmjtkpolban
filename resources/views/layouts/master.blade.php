@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ asset('vendor/stisla2.2.0/dist/assets/modules/jquery-selectric/selectric.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/stisla2.2.0/dist/assets/modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/stisla2.2.0/dist/assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/dropify/dist/css/dropify.css') }}">
 </head>
 <body>
     @include('sweetalert::alert')
@@ -75,6 +76,15 @@
     <script src="{{ asset('vendor/stisla2.2.0/dist/assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
     <script src="{{ asset('vendor/stisla2.2.0/dist/assets/modules/select2/dist/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('vendor/stisla2.2.0/dist/assets/modules/jquery-selectric/jquery.selectric.min.js') }}"></script>
+
+    <script src="{{ asset('vendor/dropify/dist/js/dropify.js' )}}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            moment.locale('id')
+            $('.dropify').dropify();
+        });
+    </script>
 
     @stack('scripts')
 </body>

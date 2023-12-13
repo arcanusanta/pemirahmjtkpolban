@@ -6,8 +6,7 @@
 
 @section('section-head')
     <ol class="breadcrumb bg-primary text-white-all">
-    <li class="breadcrumb-item">{{ __('Master') }}</li>
-        <li class="breadcrumb-item">{{ __('Pemilih') }}</li>
+        <li class="breadcrumb-item">{{ __('Master') }}</li>
         <li class="breadcrumb-item">{{ __('Program Studi') }}</li>
         <li class="breadcrumb-item"><a href="{{ route('study-program.create') }}">{{ __('Tambah') }}</a></li>
     </ol>

@@ -7,7 +7,8 @@
 @section('section-head')
     <ol class="breadcrumb bg-primary text-white-all">
         <li class="breadcrumb-item">Master</li>
-        <li class="breadcrumb-item"><a href="{{ route('operator.index') }}">Operator</a></li>
+        <li class="breadcrumb-item">Operator</li>
+        <li class="breadcrumb-item"><a href="{{ route('operator.index') }}">Data</a></li>
     </ol>
 @endsection
 
