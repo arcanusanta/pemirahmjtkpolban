@@ -8,18 +8,15 @@ use Illuminate\Http\Request;
 
 class ResultController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $Candidate = Candidate::get();
-        $Result = Result::with("voter", "candidate")->GroupBy('candidate_id')->get();
+        $Result = Result::with("voter", "candidate")->GroupBy('results.candidate_id')->get();
 
         foreach ($Result as $Value) {
-            $Candidates = Candidate::with("voter")->where("id", $Value->candidate_id)->get();
+            $Candidates = Candidate::where("id", $Value->candidate_id)->get();
             foreach ($Candidates as $key) {
-                $Data['Label'][] = $key->name;
+                $Data['Label'][] = $key->fullname;
                 
             }
             $DataCount = Result::where("candidate_id", $Value->candidate->id)->count();
@@ -35,49 +32,31 @@ class ResultController extends Controller
         return view('master.result.index', compact('Result'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         //

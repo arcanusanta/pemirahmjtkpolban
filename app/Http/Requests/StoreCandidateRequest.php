@@ -18,7 +18,7 @@ class StoreCandidateRequest extends FormRequest
             'sequence_number' => "required|unique:candidates",
             'fullname' => "required|unique:candidates",
             "photo" => "required|mimes:jpeg,png,jpg|max:2048",
-            "vision_and_mission" => "required",
+            "vision_and_mission" => "required|mimes:pdf",
             "curriculum_vitae" => "required|mimes:pdf",
         ];
     }

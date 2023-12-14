@@ -41,21 +41,26 @@ class CandidateController extends Controller
     {
         try {
             $Photo = $Request->file('photo');
+            $VisionAndMission = $Request->file('vision_and_mission');
             $CurriculumVitae = $Request->file('curriculum_vitae');
 
             if ($Request->hasFile('photo')) {
                 $TempPhoto = $Photo->store('public/candidate/photo');
 
-                if ($Request->hasFile('curriculum_vitae')) {
-                    $TempCurriculumVitae = $CurriculumVitae->store('public/candidate/curriculum_vitae');
+                if ($Request->hasFile('vision_and_mission')) {
+                    $TempVisionAndMission = $VisionAndMission->store('public/candidate/vision_and_mission');
     
-                    Candidate::create([
-                        'sequence_number' => $Request->sequence_number,
-                        'fullname' => $Request->fullname,
-                        'photo' => $TempPhoto,
-                        'vision_and_mission' => $Request->vision_and_mission,
-                        'curriculum_vitae' => $TempCurriculumVitae
-                    ]);
+                    if ($Request->hasFile('curriculum_vitae')) {
+                        $TempCurriculumVitae = $CurriculumVitae->store('public/candidate/curriculum_vitae');
+        
+                        Candidate::create([
+                            'sequence_number' => $Request->sequence_number,
+                            'fullname' => $Request->fullname,
+                            'photo' => $TempPhoto,
+                            'vision_and_mission' => $TempVisionAndMission,
+                            'curriculum_vitae' => $TempCurriculumVitae
+                        ]);
+                    }
                 }
             }
 

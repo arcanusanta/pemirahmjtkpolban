@@ -13,7 +13,7 @@ class PollingBoothController extends Controller
 {
     public function index()
     {
-        $Candidates = Candidate::latest()->get();
+        $Candidates = Candidate::first()->get();
         $UserID = Auth::user()->id;
 
         $Users = Voter::where("id", $UserID)->first();

@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\PollingBoothController;
+use App\Http\Controllers\ResultController;
 use App\Http\Controllers\StudyProgramController;
 use App\Http\Controllers\VoterController;
 use App\Http\Controllers\VoterStatusController;
@@ -102,5 +103,7 @@ Route::group(['prefix' => 'master', 'middleware' => ['auth:web,webvoter,webwitne
             Route::get('/already', [VoterStatusController::class, 'already'])->name('already');
             Route::get('/notyet', [VoterStatusController::class, 'notyet'])->name('notyet');
         });
+
+        Route::get('/result/index', [ResultController::class, 'index'])->name('result.index');
     });
 });

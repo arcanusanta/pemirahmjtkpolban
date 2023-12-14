@@ -53,6 +53,13 @@
                 <li class="{{ Request::routeIs('election-status.notyet') ? 'active' : '' }}"><a class="nav-link" href="{{ route('election-status.notyet') }}"><i class="fas fa-book-reader"></i> <span>{{ __('Belum Memilih') }}</span></a></li>
             @endhasanyrole
 
+            @hasanyrole('Administrator|Operator|Witness')
+                <li class="menu-header">{{ __('Hasil Pemilihan') }}</li>
+            @endhasanyrole
+            @hasanyrole('Administrator|Operator|Witness')
+                <li class="{{ Request::routeIs('result.index') ? 'active' : '' }}"><a class="nav-link" href="{{ route('result.index') }}"><i class="fas fa-book"></i> <span>{{ __('Hasil') }}</span></a></li>
+            @endhasanyrole
+
             @hasrole('Voter')
                 <li class="menu-header">{{ __('Tempat Pemungutan Suara') }}</li>
                 <li class="{{ Request::routeIs('polling-booth.index') ? 'active' : '' }}"><a class="nav-link" href="{{ route('polling-booth.index') }}"><i class="fas fa-box"></i> <span>{{ __('Bilik Suara') }}</span></a></li>

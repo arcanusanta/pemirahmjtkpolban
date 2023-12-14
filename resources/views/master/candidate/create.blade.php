@@ -45,9 +45,9 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">{{ __('Visi dan Misi*') }}</label>
+                            <label class="col-sm-3 col-form-label font-weight-bold">{{ __('Visi dan Misi*') }}</label>
                             <div class="col-sm-9">
-                                <textarea id="vision_and_mission" name="vision_and_mission" class="form-control">{{ old('vision_and_mission') }}</textarea>
+                                <input type="file" value="{{ old('vision_and_mission') }}" id="vision_and_mission" name="vision_and_mission" class="form-control dropify">
                             </div>
                         </div>
 
@@ -68,9 +68,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-    <script>
-        CKEDITOR.replace('vision_and_mission');
-    </script>
-@endpush

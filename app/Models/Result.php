@@ -28,7 +28,7 @@ class Result extends Model
         static::creating(function($obj) {
             $obj->id = RamseyUuid::uuid4()->toString();
         });
-    }
+    } 
 
     public function voter()
     {
