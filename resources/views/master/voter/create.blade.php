@@ -76,7 +76,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Waktu Pemilihan*</label>
+                            <label class="col-sm-3 col-form-label">Awal Waktu Pemilihan*</label>
                             <div class="col-sm-9">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -84,7 +84,21 @@
                                             <i class="fas fa-clock"></i>
                                         </div>
                                     </div>
-                                    <input type="text" value="{{ old('time') }}" id="time" name="time" class="form-control timepicker">
+                                    <input type="text" value="{{ old('start_time') }}" id="start_time" name="start_time" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Akhir Waktu Pemilihan*</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-clock"></i>
+                                        </div>
+                                    </div>
+                                    <input type="text" value="{{ old('end_time') }}" id="end_time" name="end_time" class="form-control">
                                 </div>
                             </div>
                         </div>

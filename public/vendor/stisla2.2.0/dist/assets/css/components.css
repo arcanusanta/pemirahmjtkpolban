@@ -1788,6 +1788,15 @@ tr:first-child > td > .fc-day-grid-event {
 .pricing.pricing-highlight .pricing-cta a:hover {
   background-color: #394eea !important;
 }
+
+.pricing.pricing-highlight .pricing-cta button {
+  background-color: #6777ef;
+  color: #fff;
+}
+.pricing.pricing-highlight .pricing-cta button:hover {
+  background-color: #394eea !important;
+}
+
 .pricing .pricing-padding {
   padding: 40px;
 }
@@ -1848,6 +1857,24 @@ tr:first-child > td > .fc-day-grid-event {
   margin-left: 5px;
 }
 .pricing .pricing-cta a:hover {
+  background-color: #e3eaef;
+}
+
+.pricing .pricing-cta button {
+  display: block;
+  padding: 20px 40px;
+  background-color: #f3f6f8;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 0 0 3px 3px;
+}
+.pricing .pricing-cta button .fas, .pricing .pricing-cta button .far, .pricing .pricing-cta button .fab, .pricing .pricing-cta button .fal, .pricing .pricing-cta button .ion {
+  margin-left: 5px;
+}
+.pricing .pricing-cta button:hover {
   background-color: #e3eaef;
 }
 

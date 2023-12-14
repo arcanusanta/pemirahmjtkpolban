@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('year', 4);
             $table->string('email')->unique();
             $table->enum('status', ['Aktif', 'Non Aktif']);
+            $table->time('start_time');
+            $table->time('end_time');
             $table->enum('election_status', ['Sudah Memilih', 'Belum Memilih']);
             $table->string('password');
             $table->timestamps();

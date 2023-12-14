@@ -28,6 +28,8 @@ class VotersImport implements ToCollection, WithHeadingRow
                     'year' => $row['year'],
                     'email' => $row['email'],
                     'status' => $row['status'],
+                    'start_time' => $row['start_time'],
+                    'end_time' => $row['end_time'],
                     'election_status' => $row['election_status'],
                     'password' => Hash::make($row['password']),
                 ])->assignRole('Voter');
@@ -40,6 +42,8 @@ class VotersImport implements ToCollection, WithHeadingRow
                     'year' => $row['year'],
                     'email' => $row['email'],
                     'status' => $row['status'],
+                    'start_time' => $row['start_time'],
+                    'end_time' => $row['end_time'],
                     'election_status' => $row['election_status'],
                     'password' => Hash::make($row['password']),
                 ])->assignRole('Voter');

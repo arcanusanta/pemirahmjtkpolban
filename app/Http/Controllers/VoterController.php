@@ -55,6 +55,8 @@ class VoterController extends Controller
                 'year' => $Request->year,
                 'email' => $Request->email,
                 'status' => 'Aktif',
+                'start_time' => $Request->start_time,
+                'end_time' => $Request->end_time,
                 'election_status' => 'Belum Memilih',
                 'password' => Hash::make($Request->password),
             ])->assignRole('Voter');

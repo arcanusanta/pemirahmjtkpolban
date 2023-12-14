@@ -21,6 +21,8 @@ class StoreVoterRequest extends FormRequest
             'study_program' => 'required',
             'year' => 'required',
             'email' => 'required|unique:voters',
+            'start_time' => 'required',
+            'end_time' => 'required',
             'password' => 'required'
         ];
     }

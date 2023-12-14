@@ -14,7 +14,7 @@ class Voter extends Authenticatable
     protected $keyType = 'string';
 
     protected $fillable = [
-        'nim', 'name', 'study_program_id', 'grade_id', 'year', 'email', 'status', 'election_status', 'password'
+        'nim', 'name', 'study_program_id', 'grade_id', 'year', 'email', 'status', 'start_time', 'end_time', 'election_status', 'password'
     ];
 
     protected $guarded = [];

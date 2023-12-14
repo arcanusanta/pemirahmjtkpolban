@@ -33,13 +33,28 @@ class PollingBoothController extends Controller
 
     public function create()
     {
-        Alert::success('Selamat', 'Anda telah berhasil memilih');
-        return redirect()->route('dashboard');
+        //
     }
 
-    public function store(Request $request)
+    public function store(Request $Request)
     {
-        //
+        try {
+            $Voter = Voter::where('id', Auth::user()->id)->first();
+
+            $Result = new Result();
+            $Result->voter_id = Auth::user()->id;
+            $Result->candidate_id = $Request->candidate;
+            $Result->save();
+
+            $Voter->election_status = "Sudah Memilih";
+            $Voter->save();
+
+            Alert::success('Selamat', 'Anda telah berhasil menambahkan data');
+            return redirect()->route('polling-booth.index');
+        } catch (\Exception $Excep) {
+            Alert::error('Error', $Excep->getMessage());
+            return redirect()->route('polling-booth.index');
+        }
     }
 
     public function show(string $id)
