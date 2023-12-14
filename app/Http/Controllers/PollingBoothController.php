@@ -24,10 +24,10 @@ class PollingBoothController extends Controller
             if($IsVote == 0) {
                 return view('master.polling-booth.index', compact('Candidates', 'IsVote', 'Users'));
             } else {
-                return view('master.polling-booth.index', compact('IsVote'));
+                return view('master.polling-booth.index', compact('Candidates', 'IsVote'));
             }
         } else {
-            return view('master.polling-booth.index',compact('IsVote') );
+            return view('master.polling-booth.index',compact('Candidates', 'IsVote') );
         }
     }
 

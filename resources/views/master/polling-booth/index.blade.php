@@ -24,6 +24,26 @@
                         </div>
                     </div>
                 </div>  
+
+                @foreach($Candidates as $RC)
+                            <div class="col-12 col-md-4 col-lg-4">
+                                <div class="pricing pricing-highlight">
+                                    <div class="pricing-title">
+                                        {{ $RC->sequence_number }}
+                                    </div>
+                                    <div class="pricing-padding">
+                                        <div class="pricing-price">
+                                            <div><img src="{{ Storage::url($RC->photo) }}" alt="" /></div>
+                                            <div><strong>{{ $RC->fullname }}</strong></div>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-cta">
+                                        <a href="{{ Storage::url($RC->vision_and_mission) }}">Visi Misi <i class="fas fa-arrow-right"></i></a>
+                                        <a href="{{ Storage::url($RC->curriculum_vitae) }}">Curriculum Vitae <i class="fas fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
             @else
                 @if ($IsVote == 1)
                     <div class="col-12">
@@ -36,6 +56,26 @@
                             </div>
                         </div>
                     </div>
+
+                    @foreach($Candidates as $RC)
+                            <div class="col-12 col-md-4 col-lg-4">
+                                <div class="pricing pricing-highlight">
+                                    <div class="pricing-title">
+                                        {{ $RC->sequence_number }}
+                                    </div>
+                                    <div class="pricing-padding">
+                                        <div class="pricing-price">
+                                            <div><img src="{{ Storage::url($RC->photo) }}" alt="" /></div>
+                                            <div><strong>{{ $RC->fullname }}</strong></div>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-cta">
+                                        <a href="{{ Storage::url($RC->vision_and_mission) }}">Visi Misi <i class="fas fa-arrow-right"></i></a>
+                                        <a href="{{ Storage::url($RC->curriculum_vitae) }}">Curriculum Vitae <i class="fas fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                 @else
                     @inject('carbon', 'Carbon\Carbon')
 
@@ -89,6 +129,26 @@
                                 </div>
                             </div>
                         </div>
+
+                        @foreach($Candidates as $RC)
+                            <div class="col-12 col-md-4 col-lg-4">
+                                <div class="pricing pricing-highlight">
+                                    <div class="pricing-title">
+                                        {{ $RC->sequence_number }}
+                                    </div>
+                                    <div class="pricing-padding">
+                                        <div class="pricing-price">
+                                            <div><img src="{{ Storage::url($RC->photo) }}" alt="" /></div>
+                                            <div><strong>{{ $RC->fullname }}</strong></div>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-cta">
+                                        <a href="{{ Storage::url($RC->vision_and_mission) }}">Visi Misi <i class="fas fa-arrow-right"></i></a>
+                                        <a href="{{ Storage::url($RC->curriculum_vitae) }}">Curriculum Vitae <i class="fas fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     @endif
                 @endif
             @endif
