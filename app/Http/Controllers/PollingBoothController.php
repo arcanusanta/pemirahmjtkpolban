@@ -49,7 +49,7 @@ class PollingBoothController extends Controller
             $Voter->election_status = "Sudah Memilih";
             $Voter->save();
 
-            Alert::success('Selamat', 'Anda telah berhasil menambahkan data');
+            Alert::success('Selamat', 'Terima kasih Anda telah menggunakan hak suara');
             return redirect()->route('polling-booth.index');
         } catch (\Exception $Excep) {
             Alert::error('Error', $Excep->getMessage());
