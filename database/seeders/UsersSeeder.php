@@ -14,7 +14,7 @@ class UsersSeeder extends Seeder
     {
         User::create([
             'name' => 'Administrator Pemira HMJTK POLBAN',
-            'email' => 'administrator@pemirahmjtkpolban.my.id',
+            'email' => 'administrator@pemirahmjtkpolban.xyz',
             'email_verified_at' => now(),
             'password' => Hash::make('zGUh4M?R3x8Tk%#@'),
             'remember_token' => Str::random(10),
@@ -24,7 +24,7 @@ class UsersSeeder extends Seeder
 
         User::create([
             'name' => 'Garly Nugraha',
-            'email' => 'princegarll@pemirahmjtkpolban.my.id',
+            'email' => 'princegarll@pemirahmjtkpolban.xyz',
             'email_verified_at' => now(),
             'password' => Hash::make('uRKNjge*P(XUk5F4'),
             'remember_token' => Str::random(10),
